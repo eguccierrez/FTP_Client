@@ -7,6 +7,7 @@
 #include "netinet/in.h" //IP Family. in_port_t:An unsigned integral type of exactly 16 bits.
                         //in_addr_t:An unsigned integral type of exactly 32 bits.
 #include "string.h"
+#include <sys/types.h>
 #include <regex.h> //regular-expression-matching types.
                    //defines the structures and symbolic constants used by the regcomp(), regexec(), regerror() and regfree() functions.
 #include "pthread.h"  //threads
@@ -15,7 +16,7 @@
 #include <errno.h>  //system error numbers
 #include <netdb.h>  //definitions for network database operations
 #include <arpa/inet.h> //definitions for internet operations
-#define _MULTI_THREADED
+// #define _MULTI_THREADED
 
 struct globalArgs {
 	char *filename;
@@ -25,10 +26,12 @@ struct globalArgs {
 	char *password;
 	int active;
 	char *mode;
-	char *logfile;
+	// char *logfile;
+	FILE *logfile;
 	int logging;
 	int swarming;
 	char *swarmfile;
+	int output;
 } gA;
 
 struct ftpArgs {
@@ -38,5 +41,5 @@ struct ftpArgs {
 	char *hostname;
 	char *username;
 	char *password;
-};
+}fA;
 

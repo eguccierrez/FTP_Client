@@ -10,7 +10,7 @@
 #include <sys/types.h>
 #include <regex.h> //regular-expression-matching types.
                    //defines the structures and symbolic constants used by the regcomp(), regexec(), regerror() and regfree() functions.
-#include "pthread.h"  //threads
+#include <pthread.h>  //threads
 
 
 #include <errno.h>  //system error numbers
@@ -27,19 +27,23 @@ struct globalArgs {
 	int active;
 	char *mode;
 	// char *logfile;
+	FILE *new_file;
 	FILE *logfile;
-	int logging;
+	char *log;
 	int swarming;
 	char *swarmfile;
 	int output;
+	int threadCount;
 } gA;
 
-struct ftpArgs {
+struct sArgs {
+	int numbytes;
+	int last;
 	int portnr;
 	int tid;
 	char *filename;
 	char *hostname;
 	char *username;
 	char *password;
-}fA;
+};
 
